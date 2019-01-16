@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class OnlineShop {
 
 	public OnlineShop() {
@@ -5,12 +7,13 @@ public class OnlineShop {
 	}
 
         public static void main(String[] args) {
-        ShoppingBasket basket = new ShoppingBasket();
-        basket.add("milk", 3);
-        basket.add("buttermilk", 2);
-        basket.add("cheese", 5);
-        System.out.println("basket price: " + basket.price());
-        basket.add("computer", 899);
-        System.out.println("basket price: " + basket.price());
+            Storehouse store = new Storehouse();
+            store.addProduct("coffee", 5, 10);
+            store.addProduct("milk", 3, 20);
+            store.addProduct("milkbutter", 2, 55);
+            store.addProduct("bread", 7, 8);
+
+            Shop shop = new Shop(store, new Scanner(System.in));
+            shop.manage("Pekka");
         }
 }

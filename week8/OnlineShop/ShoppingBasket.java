@@ -9,8 +9,15 @@ public class ShoppingBasket {
 	}
 
 	public void add(String product, int price) {
-		Purchase purchase = new Purchase(product, 1 , price);
-		this.basketPurchases.put(product, purchase);
+		Purchase newPurchase = this.basketPurchases.get(product);
+		if(newPurchase != null) {
+			newPurchase.increaseAmount();
+			this.basketPurchases.put(product,newPurchase );
+		} else {
+			Purchase purchase = new Purchase(product, 1 , price);
+			this.basketPurchases.put(product, purchase);
+		}
+
 	}
 
 	public int price() {
@@ -19,5 +26,11 @@ public class ShoppingBasket {
 			total += this.basketPurchases.get(purchase).price();
 		}
 		return total;
+	}
+
+	public void print() {
+		for(String purchaseName : this.basketPurchases.keySet()) {
+			System.out.println(this.basketPurchases.get(purchaseName));
+		}
 	}
 }
