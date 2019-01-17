@@ -4,7 +4,7 @@ import java.util.*;
 public class Competition {
 	private List<SkiPerson> judges;
 	private List<SkiPerson> competitors;
-	private Set<Round> rounds;
+	private static int round = 1;
 
 	public Competition() {
 		this.competitors = new ArrayList<SkiPerson>();
@@ -33,6 +33,9 @@ public class Competition {
 
 
 	public void startNewRound() {
-
+		for(int i = 0; i < competitors.size();i++) {
+			competitors.get(i).makeJump(round);
+			round++;
+		}
 	} 
 }

@@ -9,4 +9,9 @@ public class Competitor implements SkiPerson {
 	public Competitor(String name) {
 		this.name = name;
 	}
+
+	public void makeJump(int round) {
+		Jump jump = new Jump(round);
+		this.jumps.put(round, Jump);
+	}
 }

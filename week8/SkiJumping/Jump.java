@@ -1,3 +1,5 @@
+import java.lang.Math
+
 public class Jump {
 
 	private int jumpScore;
@@ -5,6 +7,7 @@ public class Jump {
 
 	public Jump(int roundNumber) {
 		this.round = roundNumber;
+		this.jumpScore = (Int) Math.random() * 61 + 10;
 	}
 
 
