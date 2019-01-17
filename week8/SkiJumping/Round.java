@@ -5,4 +5,8 @@ public class Round {
 	public Round(int roundNumber) {
 		this.roundNumber = roundNumber;
 	}
+
+	public int roundNumber() {
+		return this.roundNumber;
+	}
 }

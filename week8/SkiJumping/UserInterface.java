@@ -25,12 +25,14 @@ public class UserInterface {
 	public static void StartJumps(Scanner scan) {
 		System.out.println("Write \"jump\" to jump; otherwise you quit:");
 		String start = scan.nextLine();
-		if(!start.equals("jump")) {
-			System.exit(1);
-		} 
+		while(start.equals("jump")) {
+			createRound();
+			start = scan.nextLine();
+		}
+		System.exit(1);
 	}
 
-	public createRound() {
-		
+	public static void createRound() {
+		System.out.println("ROUND!");
 	}
 }
