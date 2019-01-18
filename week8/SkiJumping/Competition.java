@@ -9,6 +9,7 @@ public class Competition {
 	public Competition() {
 		this.competitors = new ArrayList<Competitor>();
 		this.judges = new ArrayList<Judge>();
+		this.rounds = new ArrayList<Round>();
 	}
 
 	public List<Judge> judges() {
@@ -19,6 +20,10 @@ public class Competition {
 		return this.competitors;
 	}
 
+	public List<Round> rounds() {
+		return this.rounds;
+	}
+
 	public void CreateCompetitors(ArrayList<String> competitorNames) {
 		if(competitorNames.size() > 0 && !competitorNames.get(0).equals("")) {
 			for (String name : competitorNames) {
@@ -27,8 +32,8 @@ public class Competition {
 					this.competitors.add(competitor);
 				}
 			}
-			return;
 		}
+		return;
 		
 	}
 
@@ -41,18 +46,29 @@ public class Competition {
 
 	public int getRoundNumber() {
 		int maxRound = 1;
-		if (this.rounds.size() == 0) {
+		if (this.rounds.size() == 0 || this.rounds.size() == 1) {
 			return 1;
-		} else {
-			for(Round round : this.rounds) {
-				if (round.roundNumber() > maxRound) {
-					maxRound = round.roundNumber();
-				}
-			}
+		} else { 
+			return this.rounds.size();
 		}
-		return maxRound;
 
 	} 
+
+	public ArrayList<Integer> gatherJudgeVotes() {
+		ArrayList<Integer> judgesVotes = new ArrayList<Integer>();
+		for(int j = 0; j < this.judges.size();j++) {
+			judgesVotes.add(this.judges.get(j).getRoundVote(this.getRoundNumber() - 1).voteScore());
+		}
+		Collections.sort(judgesVotes);
+		return judgesVotes;
+	}
+
+
+	public int gatherBestVotes(ArrayList<Integer> judgesVotes) {
+		int total = 0;
+		total = judgesVotes.get(2) + judgesVotes.get(3) + judgesVotes.get(4);
+		return total;
+	}
 
 
 	public void startNewRound() {
@@ -63,6 +79,7 @@ public class Competition {
 			for(int j = 0; j < this.judges.size();j++) {
 				this.judges.get(j).makeJudgement(round, this.competitors.get(i));
 			}
+			this.competitors.get(i).assignJudgeScore(gatherBestVotes(gatherJudgeVotes()));
 		}
 	}
 

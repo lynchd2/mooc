@@ -8,15 +8,29 @@ public class Competitor {
 
 	public Competitor(String name) {
 		this.name = name;
+		this.jumps = new HashMap<Round, Jump>();
 	}
 
 	public void makeJump(Round round) {
 		Jump jump = new Jump(round);
+		this.totalScore = this.totalScore + jump.jumpScore();
 		this.jumps.put(round, jump);
+	}
+	public int getJumpLength(Round round) {
+		return this.jumps.get(round).jumpScore();
 	}
 
 	public int totalScore() {
 		return this.totalScore;
+	}
+
+	public String name() {
+		return this.name;
+	}
+
+
+	public void assignJudgeScore(int judgeScore) {
+		this.totalScore = this.totalScore() + judgeScore;
 	}
 
 	// @Override
