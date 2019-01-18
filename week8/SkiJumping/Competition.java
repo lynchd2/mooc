@@ -11,6 +11,14 @@ public class Competition {
 		this.judges = new ArrayList<Judge>();
 	}
 
+	public List<Judge> judges() {
+		return this.judges;
+	}
+
+	public List<Competitor> competitors() {
+		return this.competitors;
+	}
+
 	public void CreateCompetitors(ArrayList<String> competitorNames) {
 		if(competitorNames.size() > 0 && !competitorNames.get(0).equals("")) {
 			for (String name : competitorNames) {

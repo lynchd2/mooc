@@ -22,17 +22,22 @@ public class UserInterface {
 		return competitorNames;
 	}
 
-	public static void StartJumps(Scanner scan) {
+	public static void StartJumps(Scanner scan, Competition competition) {
 		System.out.println("Write \"jump\" to jump; otherwise you quit:");
 		String start = scan.nextLine();
 		while(start.equals("jump")) {
-			createRound();
+			createRound(competition);
 			start = scan.nextLine();
 		}
 		System.exit(1);
 	}
 
-	public static void createRound() {
-		System.out.println("ROUND!");
+	public static void createRound(Competition competition) {
+		System.out.println("Round " + competition.getRoundNumber());
+		System.out.println("Jumping Order:");
+		for(int i = 1; i < competition.competitors().size() + 1;i ++) {
+			System.out.println(i + ". " + competition.competitors().get(i - 1) + competition.competitors().get(i - 1).totalScore());
+			System.out.println("judge votes: ");
+		}
 	}
 }

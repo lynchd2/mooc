@@ -11,7 +11,7 @@ public class SkiJumping {
 			ArrayList<String> competitorNames = UserInterface.gatherCompetitorNames(scan);
 			competition.CreateCompetitors(competitorNames);
 			competition.CreateJudges();
-			UserInterface.StartJumps(scan);
+			UserInterface.StartJumps(scan, competition);
 
 	}
 
