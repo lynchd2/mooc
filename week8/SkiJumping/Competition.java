@@ -24,6 +24,10 @@ public class Competition {
 		return this.rounds;
 	}
 
+	public Round getThisRound() {
+		return this.rounds().get(this.rounds().size() - 1);
+	}
+
 	public void CreateCompetitors(ArrayList<String> competitorNames) {
 		if(competitorNames.size() > 0 && !competitorNames.get(0).equals("")) {
 			for (String name : competitorNames) {
@@ -77,7 +81,7 @@ public class Competition {
 		for(int i = 0; i < this.competitors.size();i++) {
 			this.competitors.get(i).makeJump(round);
 			for(int j = 0; j < this.judges.size();j++) {
-				this.judges.get(j).makeJudgement(round, this.competitors.get(i));
+				this.judges.get(j).makeJudgement(round, this.competitors.get(i).getJump(round) ,this.competitors.get(i));
 			}
 			this.competitors.get(i).assignJudgeScore(gatherBestVotes(gatherJudgeVotes()));
 		}

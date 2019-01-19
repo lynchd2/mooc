@@ -19,10 +19,11 @@ public class Judge {
 		return this.votes.get(i);
 	}
 
-	public void makeJudgement(Round round, Competitor competitor) {
+	public void makeJudgement(Round round, Jump jump, Competitor competitor) {
 		int voteScore = (int) (Math.random() * 10 + 10);
 		int roundNumber = round.roundNumber();
 		Vote vote = new Vote(voteScore, roundNumber, competitor);
+		jump.addVoteToJump(vote);
 		this.votes.add(vote);
 	}
 

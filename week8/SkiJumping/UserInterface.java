@@ -42,13 +42,12 @@ public class UserInterface {
 		System.out.println("Jumping Order:");
 		for(int i = 1; i < competition.competitors().size() + 1;i ++) {
 			System.out.println(i + ". " + competition.competitors().get(i - 1).name() + "(" + competition.competitors().get(i - 1).totalScore() + " points)") ;
-			System.out.println("judge votes: " + competition.gatherJudgeVotes());
 		}
 		System.out.println("Results of round " + competition.getRoundNumber());
 		for(int i = 1; i < competition.competitors().size() + 1;i ++) {
 			System.out.println(competition.competitors().get(i - 1).name());
-			System.out.println("length: " + competition.competitors().get(i - 1).getJumpLength(competition.rounds().get((competition.getRoundNumber() - 1))));
-			System.out.println("judge votes: " + competition.gatherJudgeVotes());
+			System.out.println("length: " + competition.competitors().get(i - 1).getJumpLength(competition.getThisRound()));
+			System.out.println("judge votes: " + competition.competitors().get(i - 1).getJump(competition.getThisRound()).translatedJumpVotes());
 		}
 		System.out.println("Write \"jump\" to jump; otherwise you quit:");
 	}

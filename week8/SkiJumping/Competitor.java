@@ -28,9 +28,17 @@ public class Competitor {
 		return this.name;
 	}
 
+	public Map<Round, Jump> jumps() {
+		return this.jumps;
+	}
+
 
 	public void assignJudgeScore(int judgeScore) {
 		this.totalScore = this.totalScore() + judgeScore;
+	}
+
+	public Jump getJump(Round round) {
+		return this.jumps.get(round);
 	}
 
 	// @Override

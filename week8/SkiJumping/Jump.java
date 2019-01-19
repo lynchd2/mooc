@@ -20,5 +20,17 @@ public class Jump {
 		this.jumpVotes.add(vote);
 	}
 
+	public List<Vote> jumpVotes() {
+		return this.jumpVotes;
+	}
+
+	public List<Integer> translatedJumpVotes() {
+		List<Integer> translatedVotes = new ArrayList<Integer>();
+		for(Vote vote : this.jumpVotes) {
+			translatedVotes.add(vote.voteScore());
+		}
+		return translatedVotes;
+	}
+
 
 }
