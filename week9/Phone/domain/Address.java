@@ -4,8 +4,8 @@ public class Address implements Information {
 
 	private String address;
 
-	public Address(String address){
-		this.address = address;
+	public Address(String street, String state){
+		this.address = combineAddress(street, state);
 	}
 
 	public String getInformation() {
@@ -16,8 +16,8 @@ public class Address implements Information {
 		this.address = information;
 	}
 
-	public void combineAddress(String address, String street) {
-		setInformation(street + " " + address);
+	public String combineAddress(String street, String state) {
+		return street + " " + state;
 	}
 	
 
