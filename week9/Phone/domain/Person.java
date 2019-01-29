@@ -29,4 +29,13 @@ public class Person {
 	public Set<Information> getPhoneNumbers() {
 		return this.phoneNumbers;
 	}
+
+	public Set<Information> getAddresses() {
+		return this.addresses;
+	}
+
+	public void addAddress(String street, String state) {
+		Information address = new Address(street, state);
+		this.addresses.add(address);
+	}
 }

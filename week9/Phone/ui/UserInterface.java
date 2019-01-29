@@ -37,7 +37,7 @@ public class UserInterface {
 		} else if (input.equals("4")) {
 			AddAddress(addressBook);
 		} else if (input.equals("5")) {
-			AllPersonInformation(addressBook);
+			AllPersonalInformation(addressBook);
 		} else if (input.equals("6")) {
 			DetePersonsInformation(addressBook);
 		} else if (input.equals("7")) {
@@ -72,21 +72,31 @@ public class UserInterface {
 		addressBook.findPersonByNumber(number);
 	}
 
-	public void AllPersonInformation(AddressBook addressBook) {
+	public void AllPersonalInformation(AddressBook addressBook) {
 		System.out.print("Whose information to get: ");
+		String name = this.userInput.nextLine();
+		addressBook.allPersonalInformation(name);
 	}
 
 	public void AddAddress(AddressBook addressBook) {
 		System.out.print("Whose Address:");
+		String name = this.userInput.nextLine();
 		System.out.print("What street?");
+		String street = this.userInput.nextLine();
 		System.out.print("What's the state?");
+		String state = this.userInput.nextLine();
+		addressBook.addAddress(name, street, state);
 	}
 
 	public void DetePersonsInformation(AddressBook addressBook) {
 		System.out.print("Whose infomration to delete: ");
+		String name = this.userInput.nextLine();
+		addressBook.deletePersonalInformatiom(name);
 	}
 
 	public void KeyWordToSearch(AddressBook addressBook) {
 		System.out.print("What keyword to search for?");
+		String keyword = this.userInput.nextLine();
+		addressBook.keyWordToSearch(keyword);
 	}
 }
