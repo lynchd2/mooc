@@ -17,7 +17,7 @@ public class Person {
 		return this.name;
 	}
 
-	public String getAddresses() {
+	public String getAddress() {
 		return this.address;
 	}
 
@@ -25,7 +25,6 @@ public class Person {
 		this.address = street + state;
 	}
 
-	@Override
 	public String toString() {
 		return this.name + "\n\r\t" + this.address; 
 	}
